@@ -1,5 +1,8 @@
 package main;
 
+import java.util.Stack;
+
+import java.util.ArrayList;
 
 public class BalancedBrackets {
     /**
@@ -23,9 +26,17 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
+        if (str.indexOf("]") < str.indexOf("[")) {
+            return false;
+        }
+
         for (char ch : str.toCharArray()) {
+            if (brackets < 0) {
+                return false;
+            }
             if (ch == '[') {
                 brackets++;
+
             } else if (ch == ']') {
                 brackets--;
             }
